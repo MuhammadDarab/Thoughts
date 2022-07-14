@@ -9,6 +9,7 @@ import Footer from './comps/footer';
 import User from './comps/_user';
 import Account from './comps/account';
 import Profile from './comps/profile';
+import env from './env';
 
 function App() {
 
@@ -25,7 +26,7 @@ function App() {
 
   useEffect(() => {
 
-    fetch('http://localhost:8080/thought')
+    fetch(env.backendURL + '/thought')
     .then(res => res.json())
     .then(data => {
 

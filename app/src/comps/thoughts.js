@@ -1,9 +1,25 @@
 import { Result } from "postcss";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from 'react';
-
+import { useHistory } from "react-router-dom";
+import authCheck from "../authenticate";
 
 const Thoughts = ( { thoughts, using } ) => {
+
+  const route = useHistory()
+
+  useEffect(() => {
+
+    async function check() {
+      let loggedIn = await authCheck()
+      console.log(loggedIn)
+      if(!loggedIn){
+        route.push('/login')
+      }
+    }
+    check()
+
+  }, [])
 
   return (<div className='w-[77%]' >
     <h1 className="text-blue-400 text-4xl font-bold p-12">

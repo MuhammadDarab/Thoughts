@@ -1,9 +1,27 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import env from '../env';
+import authCheck from '../authenticate';
+import { useHistory } from 'react-router-dom';
 
 const Profile = () => {
 
-    const [profile, setProfile] = useState(null);
+  const route = useHistory()
+
+  useEffect(() => {
+
+    async function check() {
+      let loggedIn = await authCheck()
+      console.log(loggedIn)
+      if(!loggedIn){
+        route.push('/login')
+      }
+    }
+    check()
+
+  }, [])
+
+  const [profile, setProfile] = useState(null);
 
     useEffect(() => {
   
@@ -11,7 +29,7 @@ const Profile = () => {
       console.log(user)
       const getProfile = async () => {
   
-        fetch('http://localhost:8080/profile/'+ user ,{
+        fetch(env.backendURL + '/profile/'+ user ,{
           method: 'GET',
           credentials: 'include',
           headers: {

@@ -1,7 +1,25 @@
 import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
+import env from "../env";
+import { useHistory } from "react-router-dom";
+import authCheck from "../authenticate";
 
 const User = ({ getUsing }) => {
+
+    const route = useHistory()
+
+    useEffect(() => {
+
+      async function check() {
+        let loggedIn = await authCheck()
+        console.log(loggedIn)
+        if(!loggedIn){
+          route.push('/login')
+        }
+      }
+      check()
+
+    }, [])
 
     const [user, setUser] = useState(null);
     const [settings, setSettings] = useState(false);
@@ -10,7 +28,7 @@ const User = ({ getUsing }) => {
   
       const getUser = async () => {
   
-        fetch('http://localhost:8080/auth/login/success', {
+        fetch(env.backendURL + '/auth/login/success', {
           method: 'GET',
           credentials: 'include',
           headers: {
@@ -55,7 +73,7 @@ const User = ({ getUsing }) => {
                 backgroundPosition : 'center'
             }}
             onClick={() => {
-                window.open('http://localhost:8080/auth/logout', '_self')
+                window.open(env.backendURL + '/auth/logout', '_self')
             }}
         ></div>
 

@@ -1,5 +1,6 @@
 const express = require('express')
 const expressSession = require('express-session');
+const env = require('./env')
 const cors = require('cors');
 require('./pass')
 const passport = require('passport');
@@ -27,7 +28,7 @@ app.use(expressSession({
     },
 }));
 app.use(cors({
-    origin: "http://localhost:3000",
+    origin: env.frontendURL,
     methods: "GET, PUT, POST, DELETE",
     credentials: true
 }));
@@ -108,8 +109,8 @@ app.get('/auth/google', passport.authenticate('google', {
 }))
 
 app.get('/auth/google/redirect', passport.authenticate('google', {
-    successRedirect: 'http://localhost:3000/home',
-    failureRedirect: 'http://localhost:3000/failed'
+    successRedirect: env.frontendURL + '/home',
+    failureRedirect: env.frontendURL + '/failed'
 }))
 
 app.get('/auth/login/success', (req, res) => {
@@ -136,10 +137,19 @@ app.get('/auth/login/success', (req, res) => {
 
 })
 
+app.get('/auth/login/verify', (req, res) => {
+
+    if(req.user)
+        res.send({success: true})
+    else
+        res.send({success: false})
+    
+})
+
 app.get('/auth/logout', (req, res) => {
 
     req.logout({ keepSessionInfo: false}, () => {
-        res.redirect('http://localhost:3000/login')
+        res.redirect(env.frontendURL + '/login')
     });
 
 })

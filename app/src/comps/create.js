@@ -1,8 +1,24 @@
 import { useHistory } from "react-router-dom";
+import { useEffect } from "react";
+import authCheck from "../authenticate";
+import env from "../env";
 
 const Create = ({ using }) => {
     
-    const route = useHistory(); 
+    const route = useHistory()
+
+    useEffect(() => {
+  
+      async function check() {
+        let loggedIn = await authCheck()
+        console.log(loggedIn)
+        if(!loggedIn){
+          route.push('/login')
+        }
+      }
+      check()
+  
+    }, [])
 
     return (
 
@@ -60,7 +76,7 @@ function postThought(route, using) {
         }) // body data type must match "Content-Type" header
     }
 
-    fetch('http://localhost:8080/thought', response)
+    fetch(env.backendURL + '/thought', response)
     .then(() => route.push('/home'))
     .then(() => {
         window.location.reload()
