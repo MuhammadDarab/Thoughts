@@ -13,7 +13,7 @@ const DB = 'mongodb+srv://Mongo2099:futureman2099@cluster0.inxix.mongodb.net/Mem
 
 mongoose.connect(DB);
 
-const Thought = mongoose.model('thoughts', { title: String, description: String, by: String, date: { type: Date, default: Date.now } });
+const Thought = mongoose.model('thoughts', { title: String, description: String, by: String, img:String,  date: { type: Date, default: Date.now } });
 
 const Users = mongoose.model('users', { fullName: String, tag: String, img:String } );
 
@@ -65,8 +65,11 @@ app.post('/thought', (req, res) => {
 
     console.log(req.body)
 
-    const thought = new Thought({ title: req.body.title, description: req.body.description, by: req.body.by });
-    thought.save().then(() => res.send('~thought Posted~'));
+    Users.findOne({ tag: req.body.by }).then((usr) => {
+        const thought = new Thought({ title: req.body.title, description: req.body.description, by: req.body.by, img: usr.img });
+        thought.save().then(() => res.send('~thought Posted~'));
+    })
+    
 
 })
 
@@ -94,7 +97,7 @@ app.patch('/thought/:id', (req, res) => {
 
 })
 
-app.get('/thoughts/purge', (req, res) => {
+app.delete('/thoughts/purge', (req, res) => {
 
     Thought.remove({}).then(() => res.send('All thoughts Deleted'))
 

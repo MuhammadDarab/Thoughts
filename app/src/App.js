@@ -34,13 +34,14 @@ function App() {
 
     })
 
-    setUsers([{
-      name: 'MrUser123',
-      bio: 'This is my bio!'
-    }, {
-      name: 'MrPictureMan786',
-      bio: 'Welcome to my ID!'
-    }])
+    fetch(env.backendURL + '/profiles')
+    .then(res => res.json())
+    .then(data => {
+
+      setUsers(data)
+      console.log(data)
+
+    })
 
   }, [])
 

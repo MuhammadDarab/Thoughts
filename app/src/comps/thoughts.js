@@ -41,16 +41,11 @@ const Thoughts = ( { thoughts, using } ) => {
               }}>
                 </div>
               </div>
-              <div className="text-gray-500 text-sm  transition:all hover:transition:all hover:text-white">
+              <div className="text-gray-500 text-sm  transition:all hover:transition:all hover:text-white break-words">
                 {thought.description}
               </div>
               <div className="text-gray-500 text-sm transition:all hover:transition:all hover:text-white font-light flex">
-              <div className='p-3 bg-blue-400 w-fit rounded-full shadow-lg cursor-pointer' style={{ backgroundImage: `url(${/* 
-               What to place in here
-                1. Either Modify API.. or..
-                2. Add logic to front end.. 
-              */
-             ""})`, backgroundSize: 'cover' }}></div>
+              <div className='p-3 bg-blue-400 w-fit rounded-full shadow-lg cursor-pointer' style={{ backgroundImage: `url(${thought.img})`, backgroundSize: 'cover' }}></div>
               
               <Link className="text-blue-800 text-md transition:all hover:transition:all pl-1" to={'/profile/'+thought.by}>@{thought.by}
               </Link>

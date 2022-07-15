@@ -1,10 +1,11 @@
 import { useHistory } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import authCheck from "../authenticate";
 import env from "../env";
 
 const Create = ({ using }) => {
     
+    const [label, setLabel] = useState(false)
     const route = useHistory()
 
     useEffect(() => {
@@ -38,7 +39,9 @@ const Create = ({ using }) => {
 
                 <div className="flex mt-4">
 
-                    <div className="border-2 border-blue-400 mr-4 w-fit p-4 text-blue-400 rounded-2xl shadow-2xl cursor-pointer">Add Label</div>
+                    <div className="border-2 border-blue-400 mr-4 w-fit p-4 text-blue-400 rounded-2xl shadow-2xl cursor-pointer" onClick={() => {
+                        setLabel(!label)
+                    }}>Add Label</div>
                     <div className="bg-blue-400 w-fit p-4 text-white rounded-2xl shadow-2xl cursor-pointer" onClick={() => {
                         postThought(route, using)
                     }}>Post!</div>

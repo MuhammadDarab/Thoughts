@@ -74,17 +74,34 @@ const Sidebar = ( { users } ) => {
             <div className="py-1 mt-4 rounded-2xl shadow-2xl bg-blue-400">
                 {users.map((user) => {
 
-                    return (<div className="bg-blue-500 m-4 p-4 rounded-2xl shadow-xl">
+                    return (
 
-                        <div className="text-white text-xs font-bold">
-                            {user.name?.givenName}
-                        </div>
 
-                        <div className="text-white text-xs">
-                            {user.bio}
-                        </div>
+                            <div className="bg-blue-500 m-4 p-4 rounded-2xl shadow-xl flex content-center items-center">
 
-                    </div>)
+                                    <div className='p-4 bg-blue-400 w-fit rounded-full shadow-lg cursor-pointer' style={{ backgroundImage: `url(${user?.img})`, backgroundSize: 'cover' }}>
+
+                                        <div className="bg-lime-600 p-2 rounded-full shadow-lg relative -bottom-4 -left-4">
+                                        </div>
+
+                                    </div>  
+
+                                    <div className="pl-2">
+
+                                        <div className="text-white text-xs font-bold">
+                                        {user?.fullName}
+                                        </div>
+
+                                        <div className="text-white text-xs font-light">
+                                            @{user?.tag}
+                                        </div>
+
+                                    </div>
+
+                            </div>
+
+
+                    )
 
                 })}
               </div>
