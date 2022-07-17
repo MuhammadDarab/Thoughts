@@ -17,7 +17,7 @@ const Create = ({ using }) => {
           route.push('/login')
         }
       }
-      check()
+    //   check()
   
     }, [])
 

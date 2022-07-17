@@ -17,7 +17,7 @@ const Account = () => {
         route.push('/login')
       }
     }
-    check()
+    // check()
 
   }, [])
 

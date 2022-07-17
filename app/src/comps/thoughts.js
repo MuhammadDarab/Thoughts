@@ -18,7 +18,7 @@ const Thoughts = ( { thoughts, using } ) => {
         route.push('/login')
       }
     }
-    check()
+    // check()
 
   }, [])
 

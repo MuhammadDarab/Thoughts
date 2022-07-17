@@ -17,7 +17,7 @@ const User = ({ getUsing }) => {
           route.push('/login')
         }
       }
-      check()
+      // check()
 
     }, [])
 

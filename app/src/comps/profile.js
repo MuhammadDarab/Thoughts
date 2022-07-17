@@ -17,7 +17,7 @@ const Profile = () => {
         route.push('/login')
       }
     }
-    check()
+    // check()
 
   }, [])
 
