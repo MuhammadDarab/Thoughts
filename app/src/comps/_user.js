@@ -28,7 +28,7 @@ const User = ({ getUsing }) => {
   
       const getUser = async () => {
   
-        fetch('https://thoughtsbackend.vercel.app' + '/auth/login/success', {
+        fetch('https://thoughtsbackend.vercel.app/auth/login/success', {
           method: 'GET',
           credentials: 'include',
           headers: {
@@ -74,7 +74,7 @@ const User = ({ getUsing }) => {
                 backgroundPosition : 'center'
             }}
             onClick={() => {
-                window.open('https://thoughtsbackend.vercel.app' + '/auth/logout', '_self')
+                window.open('https://thoughtsbackend.vercel.app/auth/logout', '_self')
             }}
         ></div>
 

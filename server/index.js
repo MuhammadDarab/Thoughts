@@ -107,12 +107,8 @@ app.delete('/thoughts/purge', (req, res) => {
 
 })
 
-app.get('/auth/google', passport.authenticate('google', {
-    scope:['profile']
-}, (req, res) => {
-
+app.get('/auth/google', passport.authenticate('google', { scope: [ 'email', 'profile' ] }, (req, res) => {
     res.send(req)
-
 }))
 
 app.get('/auth/google/redirect', passport.authenticate('google', {

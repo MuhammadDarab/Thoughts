@@ -3,7 +3,7 @@ import env from "./env";
 const authCheck = async () => {
 
     let Auth = false
-    let resp = await fetch('https://thoughtsbackend.vercel.app' + '/auth/login/verify', {
+    let resp = await fetch('https://thoughtsbackend.vercel.app/auth/login/verify', {
         method: 'GET',
         credentials: 'include',
         headers: {

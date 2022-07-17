@@ -79,7 +79,7 @@ function postThought(route, using) {
         }) // body data type must match "Content-Type" header
     }
 
-    fetch('https://thoughtsbackend.vercel.app' + '/thought', response)
+    fetch('https://thoughtsbackend.vercel.app/thought', response)
     .then(() => route.push('/home'))
     .then(() => {
         window.location.reload()
