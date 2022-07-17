@@ -106,7 +106,13 @@ app.delete('/thoughts/purge', (req, res) => {
 
 })
 
-app.get('/auth/google', passport.authenticate('google', {scope: 'https://www.googleapis.com/auth/plus.login'}, (req, res) => {res.send(req)}))
+app.get('/auth/google', passport.authenticate('google', {
+    scope:['profile']
+}, (req, res) => {
+
+    res.send(req)
+
+}))
 
 app.get('/auth/google/redirect', passport.authenticate('google', {
     successRedirect: env.frontendURL + '/home',
