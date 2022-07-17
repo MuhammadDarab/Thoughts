@@ -30,7 +30,7 @@ app.use(expressSession({
     },
 }));
 app.use(cors({
-    origin: 'https://thoughts-rho.vercel.app',
+    origin: env.frontendURL,
     methods: "GET, PUT, POST, DELETE",
     credentials: true
 }));
@@ -140,6 +140,9 @@ app.get('/auth/login/success', (req, res) => {
         })
 
     }
+    else {
+        res.send(404)
+    }
 
 })
 
@@ -155,7 +158,7 @@ app.get('/auth/login/verify', (req, res) => {
 app.get('/auth/logout', (req, res) => {
 
     req.logout({ keepSessionInfo: false}, () => {
-        res.redirect('https://thoughts-rho.vercel.app' + '/login')
+        res.redirect(env.frontendURL + '/login')
     });
 
 })
