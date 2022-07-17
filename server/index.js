@@ -5,6 +5,7 @@ const cors = require('cors');
 require('./pass')
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20');
+let userSession = new Object();
 
 //Mongo Setup...
 const mongoose = require('mongoose');
@@ -121,6 +122,7 @@ app.get('/auth/google/redirect', passport.authenticate('google', {
 
 app.get('/auth/login/success', (req, res) => {
 
+    userSession = req.user
     if (req.user) {
         res.status(200).json({
             success: true,
@@ -149,9 +151,9 @@ app.get('/auth/login/success', (req, res) => {
 app.get('/auth/login/verify', (req, res) => {
 
     if(req.user)
-        res.send({success: true})
+        res.send(userSession)
     else
-        res.send({success: false})
+        res.send(userSession)
     
 })
 
