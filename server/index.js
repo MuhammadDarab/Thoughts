@@ -122,8 +122,8 @@ app.get('/auth/google/redirect', passport.authenticate('google', {
 
 app.get('/auth/login/success', (req, res) => {
 
-    userSession = req.user
     if (req.user) {
+        userSession = req.user
         res.status(200).json({
             success: true,
             message: 'successfull',
