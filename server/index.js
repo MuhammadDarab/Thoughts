@@ -31,7 +31,7 @@ app.use(expressSession({
     },
 }));
 app.use(cors({
-    origin: env.frontendURL,
+    origin: 'https://thoughts-rho.vercel.app',
     methods: "GET, PUT, POST, DELETE",
     credentials: true
 }));
@@ -119,7 +119,6 @@ app.get('/auth/google/redirect', passport.authenticate('google', {
 app.get('/auth/login/success', (req, res) => {
 
     if (req.user) {
-        userSession = req.user
         res.status(200).json({
             success: true,
             message: 'successfull',
@@ -146,17 +145,17 @@ app.get('/auth/login/success', (req, res) => {
 
 app.get('/auth/login/verify', (req, res) => {
 
-    if(userSession)
-        res.send(userSession)
+    if(req.user)
+        res.send({success: true})
     else
-        res.send({success: 'no sessions found.'})
+        res.send({success: false})
 
 })
 
 app.get('/auth/logout', (req, res) => {
 
     req.logout({ keepSessionInfo: false}, () => {
-        res.redirect(env.frontendURL + '/login')
+        res.redirect('https://thoughts-rho.vercel.app/login')
     });
 
 })
