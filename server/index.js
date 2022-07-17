@@ -141,7 +141,7 @@ app.get('/auth/login/success', (req, res) => {
 
     }
     else {
-        res.send(408)
+        res.send(req)
     }
 
 })
