@@ -150,11 +150,11 @@ app.get('/auth/login/success', (req, res) => {
 
 app.get('/auth/login/verify', (req, res) => {
 
-    if(req.user)
+    if(userSession)
         res.send(userSession)
     else
-        res.send(userSession)
-    
+        res.send({success: 'no sessions found.'})
+
 })
 
 app.get('/auth/logout', (req, res) => {
