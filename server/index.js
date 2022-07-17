@@ -138,7 +138,7 @@ app.get('/auth/login/success', (req, res) => {
 
     }
     else {
-        res.send(req)
+        res.send('No User Handled..')
     }
 
 })
