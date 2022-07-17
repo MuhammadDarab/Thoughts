@@ -17,6 +17,8 @@ const Thought = mongoose.model('thoughts', { title: String, description: String,
 
 const Users = mongoose.model('users', { fullName: String, tag: String, img:String } );
 
+const Comments = mongoose.model('comments', { id: String, comment: String, by: String, img: String })
+
 const app = express();
 app.use(express.json());
 app.use(expressSession({
@@ -39,7 +41,7 @@ app.use(passport.session());
 app.get('/thought/:id', (req, res) => {
 
     const { params: { id } } = req;
-    Thought.find({ id }).then( (result) => res.send(result) )
+    Thought.find({ _id: id }).then( (result) => res.send(result) )
 
 })
 
@@ -63,14 +65,11 @@ app.get('/thought', (req, res) => {
 //Posts a thought
 app.post('/thought', (req, res) => {
 
-    console.log(req.body)
-
     Users.findOne({ tag: req.body.by }).then((usr) => {
         const thought = new Thought({ title: req.body.title, description: req.body.description, by: req.body.by, img: usr.img });
         thought.save().then(() => res.send('~thought Posted~'));
     })
     
-
 })
 
 app.delete('/thought/:id', (req, res) => {
@@ -99,7 +98,11 @@ app.patch('/thought/:id', (req, res) => {
 
 app.delete('/thoughts/purge', (req, res) => {
 
-    Thought.remove({}).then(() => res.send('All thoughts Deleted'))
+    Thought.remove({}).then(() => {
+        Comments.remove({}).then(() => {
+            res.send('Thoughts and their relevant comments removed!')
+        })
+    })
 
 })
 
@@ -192,5 +195,36 @@ app.get('/profiles', (req, res) => {
     })
 })
 
+app.post('/comment', (req, res) => {
+
+    const { body: { id, comment, by } } = req;
+
+    Users.findOne({ tag: by }).then((resp) => {
+
+        const Comment = new Comments({ id, comment, by, img: resp.img });
+        Comment.save().then(() => res.send('~Comment Posted~'));
+
+    })
+
+})
+
+app.get('/comments', (req, res) => {
+
+    Comments.find({}).then((resp) => res.send(resp))
+
+})
+
+app.delete('/comments/purge', (req, res) => {
+
+    Comments.remove({}).then((resp) => res.send('comments removed!'))
+
+})
+
+app.get('/comments/:id', (req, res) => {
+
+    const { params: { id } } = req
+    Comments.find({ id: id }).then((resp) => res.send(resp))
+
+})
 
 app.listen(8080, () => console.log('~ Server is up (8080)'))

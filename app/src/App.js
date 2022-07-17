@@ -2,6 +2,7 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Thoughts from './comps/thoughts'
+import Thought from './comps/thought'
 import Sidebar from './comps/sidebar'
 import Create from './comps/create';
 import Login from './comps/login';
@@ -54,6 +55,14 @@ function App() {
 
             <Route exact path="/login">
               <Login />
+            </Route>
+
+            <Route exact path="/">
+              <Login />
+            </Route>
+
+            <Route exact path="/thought">
+              <Thought using={using}/>
             </Route>
 
             <Route exact path="/home">

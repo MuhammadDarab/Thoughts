@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 const Sidebar = ( { users } ) => {
     
+    const route = useHistory();
+
     const [trending, setTrending] = useState(true);
     const [searchUser, setSearchUser] = useState(false);
 
@@ -75,9 +78,9 @@ const Sidebar = ( { users } ) => {
                 {users.map((user) => {
 
                     return (
-
-
-                            <div className="bg-blue-500 m-4 p-4 rounded-2xl shadow-xl flex content-center items-center">
+                            <div className="bg-blue-500 cursor-pointer m-4 p-4 rounded-2xl shadow-xl flex content-center items-center" onClick={() => {
+                                route.push('/profile/'+user?.tag)
+                            }}>
 
                                     <div className='p-4 bg-blue-400 w-fit rounded-full shadow-lg cursor-pointer' style={{ backgroundImage: `url(${user?.img})`, backgroundSize: 'cover' }}>
 
@@ -99,8 +102,6 @@ const Sidebar = ( { users } ) => {
                                     </div>
 
                             </div>
-
-
                     )
 
                 })}
