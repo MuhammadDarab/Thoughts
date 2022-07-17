@@ -115,8 +115,8 @@ app.get('/auth/google', passport.authenticate('google', {
 }))
 
 app.get('/auth/google/redirect', passport.authenticate('google', {
-    successRedirect: env.frontendURL + '/home',
-    failureRedirect: env.frontendURL + '/failed'
+    successRedirect: 'https://thoughts-rho.vercel.app/home',
+    failureRedirect: 'https://thoughts-rho.vercel.app/failed'
 }))
 
 app.get('/auth/login/success', (req, res) => {
