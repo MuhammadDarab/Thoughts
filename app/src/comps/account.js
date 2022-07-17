@@ -28,7 +28,7 @@ const Account = () => {
   
       const getUser = async () => {
   
-        fetch(env.backendURL + '/auth/login/success', {
+        fetch('https://thoughtsbackend.vercel.app' + '/auth/login/success', {
           method: 'GET',
           credentials: 'include',
           headers: {
@@ -47,7 +47,7 @@ const Account = () => {
 
     useEffect(() => {
       const getThoughts = async () => {
-        fetch(env.backendURL + '/thoughts/'+ user?.name?.givenName, {
+        fetch('https://thoughtsbackend.vercel.app' + '/thoughts/'+ user?.name?.givenName, {
           method: 'GET',
           credentials: 'include',
           headers: {
