@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
-import env from "../env";
 import { useHistory } from "react-router-dom";
 import authCheck from "../authenticate";
 
@@ -8,18 +7,18 @@ const User = ({ getUsing }) => {
 
     const route = useHistory()
 
-    useEffect(() => {
+    // useEffect(() => {
 
-      async function check() {
-        let loggedIn = await authCheck()
-        console.log(loggedIn)
-        if(!loggedIn){
-          route.push('/login')
-        }
-      }
-      // check()
+    //   async function check() {
+    //     let loggedIn = await authCheck()
+    //     console.log(loggedIn)
+    //     if(!loggedIn){
+    //       route.push('/login')
+    //     }
+    //   }
+    //   // check()
 
-    }, [])
+    // }, [])
 
     const [user, setUser] = useState(null);
     const [settings, setSettings] = useState(false);

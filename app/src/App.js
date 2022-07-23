@@ -57,10 +57,6 @@ function App() {
               <Login />
             </Route>
 
-            <Route exact path="/">
-              <Login />
-            </Route>
-
             <Route exact path="/thought">
               <Thought using={using}/>
             </Route>
