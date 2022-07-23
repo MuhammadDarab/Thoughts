@@ -29,7 +29,7 @@ const Profile = () => {
       console.log(user)
       const getProfile = async () => {
   
-        fetch('https://thoughtsbackend.vercel.app/profile/'+ user ,{
+        fetch('http://localhost:8080/profile/'+ user ,{
           method: 'GET',
           credentials: 'include',
           headers: {
