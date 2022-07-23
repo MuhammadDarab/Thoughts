@@ -108,13 +108,17 @@ app.delete('/thoughts/purge', (req, res) => {
 })
 
 app.get('/auth/google', passport.authenticate('google', { scope: [ 'email', 'profile' ] }, (req, res) => {
-    res.send(req)
+    res.send(req.user)
 }))
 
 app.get('/auth/google/redirect', passport.authenticate('google', {
     successRedirect: 'https://thoughts-rho.vercel.app/home',
     failureRedirect: 'https://thoughts-rho.vercel.app/failed'
-}))
+}),() => {
+
+    res.send(req.user)
+
+})
 
 app.get('/auth/login/success', (req, res) => {
 
@@ -126,29 +130,15 @@ app.get('/auth/login/success', (req, res) => {
         })
     
         Users.findOne({ tag: req?.user?.name?.givenName }).then((result) => {
-
             if(result == null){
-
                 const User = new Users({ fullName: req?.user?.displayName, tag: req?.user?.name?.givenName, img: req?.user?.photos[0].value });
                 User.save();
-                
             }
-    
         })
 
     }
-    else {
-        res.send('No User Handled..')
-    }
-
-})
-
-app.get('/auth/login/verify', (req, res) => {
-
-    if(req.user)
-        res.send({success: true})
     else
-        res.send({success: false})
+    res.send(404)
 
 })
 
