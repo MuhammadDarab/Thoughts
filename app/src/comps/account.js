@@ -30,7 +30,7 @@ const Account = () => {
   
         fetch('http://localhost:8080/auth/login/success', {
           method: 'GET',
-          credentials: 'include',
+          // credentials: 'include',
           headers: {
             Accept: 'application/json',
             "Content-Type" : "application/json",
@@ -50,7 +50,7 @@ const Account = () => {
       const getThoughts = async () => {
         fetch('http://localhost:8080/thoughts/'+ user?.name?.givenName, {
           method: 'GET',
-          credentials: 'include',
+          // credentials: 'include',
           headers: {
             Accept: 'application/json',
             "Content-Type" : "application/json",

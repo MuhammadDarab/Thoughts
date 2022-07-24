@@ -31,9 +31,8 @@ app.use(expressSession({
     },
 }));
 app.use(cors({
-    origin: 'https://thoughts-rho.vercel.app',
-    methods: "GET, PUT, POST, DELETE",
-    credentials: true
+    origin: '*',
+    methods: "GET, PUT, POST, DELETE"
 }));
 app.use(passport.initialize());
 app.use(passport.session());
