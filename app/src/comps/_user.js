@@ -27,7 +27,7 @@ const User = ({ getUsing }) => {
   
       const getUser = async () => {
   
-        fetch('http://192.168.100.14:8080/auth/login/success', {
+        fetch('http://localhost:8080/auth/login/success', {
           method: 'GET',
           // credentials: 'include',
           headers: {
@@ -73,7 +73,7 @@ const User = ({ getUsing }) => {
                 backgroundPosition : 'center'
             }}
             onClick={() => {
-                window.open('http://192.168.100.14:8080/auth/logout', '_self')
+                window.open('http://localhost:8080/auth/logout', '_self')
             }}
         ></div>
 

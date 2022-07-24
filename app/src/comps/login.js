@@ -15,7 +15,7 @@ const Login = () => {
 
         <div className="cursor-pointer my-8 flex items-center rounded-2xl shadow-xl border-blue-400 text-blue-400 border-2 text-center w-fit mx-auto p-4 hover:transition-all transition-all hover:shadow-2xl"
             onClick={() => {
-                window.location.href = 'http://192.168.100.14:8080/auth/google'
+                window.location.href = 'http://localhost:8080/auth/google'
             }}
         >
             <img width='40px' height='auto' src='https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png' alt='google'/>

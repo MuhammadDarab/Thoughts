@@ -28,7 +28,7 @@ const Account = () => {
   
       const getUser = async () => {
   
-        fetch('http://192.168.100.14:8080/auth/login/success', {
+        fetch('http://localhost:8080/auth/login/success', {
           method: 'GET',
           // credentials: 'include',
           headers: {
@@ -48,7 +48,7 @@ const Account = () => {
 
     useEffect(() => {
       const getThoughts = async () => {
-        fetch('http://192.168.100.14:8080/thoughts/'+ user?.name?.givenName, {
+        fetch('http://localhost:8080/thoughts/'+ user?.name?.givenName, {
           method: 'GET',
           // credentials: 'include',
           headers: {
