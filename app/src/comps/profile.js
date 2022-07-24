@@ -29,7 +29,7 @@ const Profile = () => {
       console.log(user)
       const getProfile = async () => {
   
-        fetch('http://localhost:8080/profile/'+ user ,{
+        fetch('http://192.168.100.14:8080/profile/'+ user ,{
           method: 'GET',
           credentials: 'include',
           headers: {

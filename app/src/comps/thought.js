@@ -10,7 +10,7 @@ const Thought = ( { using } ) => {
 
         let comment = document?.querySelector('#comment').value;
 
-        fetch('http://localhost:8080/comment', { 
+        fetch('http://192.168.100.14:8080/comment', { 
             method : 'POST',
             mode: 'cors', // no-cors, *cors, same-origin
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -37,7 +37,7 @@ const Thought = ( { using } ) => {
     useEffect(() => {
 
         let thoughtId = localStorage.getItem('thought') 
-        fetch('http://localhost:8080/thought/' + thoughtId )
+        fetch('http://192.168.100.14:8080/thought/' + thoughtId )
         .then((res) => res.json())
         .then((result) => {
 
@@ -52,7 +52,7 @@ const Thought = ( { using } ) => {
         console.log('just ran again, No of rerenders => ' + update)
         setTimeout(() => {
             let thoughtId = localStorage.getItem('thought')
-            fetch('http://localhost:8080/comments/' + thoughtId)
+            fetch('http://192.168.100.14:8080/comments/' + thoughtId)
             .then(response => response.json())
             .then(cmnt => setComments(cmnt.reverse()))
         }, 1000)

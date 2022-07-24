@@ -1,7 +1,7 @@
 let env = {
 
-    // backendURL: 'http://localhost:8080' 
-    backendURL: 'http://localhost:8080'
+    // backendURL: 'http://192.168.100.14:8080' 
+    backendURL: 'http://192.168.100.14:8080'
 
 }
 

@@ -27,7 +27,7 @@ function App() {
 
   useEffect(() => {
 
-    fetch('http://localhost:8080/thought')
+    fetch('http://192.168.100.14:8080/thought')
     .then(res => res.json())
     .then(data => {
 
@@ -35,7 +35,7 @@ function App() {
 
     })
 
-    fetch('http://localhost:8080/profiles')
+    fetch('http://192.168.100.14:8080/profiles')
     .then(res => res.json())
     .then(data => {
 

@@ -79,7 +79,7 @@ function postThought(route, using) {
         }) // body data type must match "Content-Type" header
     }
 
-    fetch('http://localhost:8080/thought', response)
+    fetch('http://192.168.100.14:8080/thought', response)
     .then(() => route.push('/home'))
     .then(() => {
         window.location.reload()
