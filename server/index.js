@@ -31,8 +31,9 @@ app.use(expressSession({
     },
 }));
 app.use(cors({
-    origin: 'https://thoughts-rho.vercel.app',
-    methods: "GET, PUT, POST, DELETE"
+
+    "acces"
+
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -113,7 +114,7 @@ app.get('/auth/google', passport.authenticate('google', { scope: [ 'email', 'pro
 app.get('/auth/google/redirect', passport.authenticate('google', {
     successRedirect: 'https://thoughts-rho.vercel.app/home',
     failureRedirect: 'https://thoughts-rho.vercel.app/failed'
-}),() => {
+}),(req, res) => {
 
     res.send(req.user)
 
