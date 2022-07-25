@@ -22,17 +22,20 @@ const Comments = mongoose.model('comments', { id: String, comment: String, by: S
 
 const app = express();
 app.use(express.json());
+
 app.use(expressSession({
     key: "someKey",
     secret: 'ajdwjaidjawidj',
     cookie: {
-      maxAge: 2678400000 // 31 days
-        // maxAge: 30
+      maxAge: 2678400000,
+      sameSite: 'none',
+      secure: 'auto'
     },
 }));
 app.use(cors({
 
-    "acces"
+    origin: "https://thoughts-rho.vercel.app",
+    credentials: true,
 
 }));
 app.use(passport.initialize());
