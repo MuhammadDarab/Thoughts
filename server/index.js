@@ -27,9 +27,10 @@ app.use(expressSession({
     key: "someKey",
     secret: 'ajdwjaidjawidj',
     cookie: {
-      maxAge: 2678400000,
-      sameSite: 'none',
-      secure: 'auto'
+        secure: true,
+        httpOnly: true,
+        sameSite: 'none',
+        maxAge: 60 * 60 * 24 * 1000
     },
 }));
 app.use(cors({
