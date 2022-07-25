@@ -29,7 +29,7 @@ app.use(expressSession({
     cookie: {
       maxAge: 2678400000,
       sameSite: 'none',
-      secure: 'auto'
+      secure: true
     },
 }));
 app.use(cors({
