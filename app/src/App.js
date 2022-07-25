@@ -22,6 +22,7 @@ function App() {
 
     setUsing(val)
     console.log('Updated...')
+    console.log('Upated V2?..')
 
   }
 
