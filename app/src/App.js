@@ -27,7 +27,7 @@ function App() {
 
   useEffect(() => {
 
-    fetch('http://localhost:8080/thought')
+    fetch('https://thoughtsbackend.vercel.app/thought')
     .then(res => res.json())
     .then(data => {
 
@@ -35,7 +35,7 @@ function App() {
 
     })
 
-    fetch('http://localhost:8080/profiles')
+    fetch('https://thoughtsbackend.vercel.app/profiles')
     .then(res => res.json())
     .then(data => {
 

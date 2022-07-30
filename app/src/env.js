@@ -1,7 +1,7 @@
 let env = {
 
-    // backendURL: 'http://localhost:8080' 
-    backendURL: 'http://localhost:8080'
+    // backendURL: 'https://thoughtsbackend.vercel.app' 
+    backendURL: 'https://thoughtsbackend.vercel.app'
 
 }
 
