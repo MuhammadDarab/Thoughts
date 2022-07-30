@@ -1,0 +1,23 @@
+{
+  "name": "Thoughts-mono",
+  "version": "1.0.0",
+  "description": "An App to let your thoughts be saved...",
+  "main": "index.js",
+  "scripts": {
+    "build": "concurrently \"cd server && node index.js\" \"cd app && npm run build\" "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MuhammadDarab/Thoughts.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MuhammadDarab/Thoughts/issues"
+  },
+  "homepage": "https://github.com/MuhammadDarab/Thoughts#readme",
+  "dependencies": {
+    "concurrently": "^7.3.0"
+  }
+}

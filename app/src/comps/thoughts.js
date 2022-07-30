@@ -7,13 +7,15 @@ import authCheck from "../authenticate";
 
 const Thoughts = ( { thoughts, using } ) => {
 
+  console.log(using)
   const route = useHistory()
+  const [popup, setPopup] = useState(-1)
+  const [context, setContext] = useState(0)
 
   useEffect(() => {
 
     async function check() {
       let loggedIn = await authCheck()
-      console.log(loggedIn)
       if(!loggedIn){
         route.push('/login')
       }
@@ -26,43 +28,65 @@ const Thoughts = ( { thoughts, using } ) => {
     <h1 className="text-blue-400 text-4xl font-bold p-12">
       Latest thoughts..
 
-      {thoughts.length !== 0 ? thoughts.map((thought, id) => {
+      {thoughts.length !== 0 ? thoughts.map((thought) => {
 
           return (
 
             <div className="p-8 bg-gray-100 rounded-2xl shadow-2xl m-8 transition-all 
-            hover:bg-blue-400 hover:transition-all hover:p-10" onClick={() => {
-
-              localStorage.setItem('thought', thought._id)
-              route.push('/thought')
-            
-            }}>
+            hover:bg-blue-400 hover:transition-all hover:scale-95">
 
               <div className="flex text-2xl font-bold text-gray-600 transition:all hover:transition:all">
-                <div className="flex-1">{thought.title}</div>
+                <div className="flex-1" 
+                  onClick={() => {
+
+                    localStorage.setItem('thought', thought._id)
+                    route.push('/thought')
+                  
+                  }}>{thought.title}</div>
                 <div style={{ backgroundImage: 'url(https://cdn1.iconfinder.com/data/icons/heroicons-ui/24/dots-vertical-512.png)',
                 backgroundSize: 'contain',
                 backgroundRepeat: 'no-repeat',
                 padding: '12px'
               }}
-                id={id}
+                id={thought._id}
+                onClick={() => popupModal(thought._id, setPopup, setContext, context)}
               >
                 
-                {<div className="absolute text-xs flex-col bg-white rounded-sm shadow-xl">
+                { popup === thought._id && thought.by === using.name.givenName ? 
+                  (
+                   <div className="absolute text-xs flex-col bg-white rounded-sm shadow-xl">
 
-                  <div className="shadow-xl py-1 px-2 hover:bg-red-500 hover:text-white bg-white cursor-pointer">
-                    Delete
-                  </div>
+                    <div className="shadow-xl py-1 px-2 hover:bg-green-500 hover:text-white bg-white cursor-pointer">
+                      Edit
+                    </div>
 
-                  <div className="shadow-xl py-1 px-2 hover:bg-blue-500 hover:text-white bg-white cursor-pointer">
-                    Pin
-                  </div>
+                    <div onClick={() => delThought(thought._id)} className="shadow-xl py-1 px-2 hover:bg-red-500 hover:text-white bg-white cursor-pointer">
+                      Delete
+                    </div>
 
-                  <div className="shadow-xl py-1 px-2 hover:bg-slate-500 hover:text-white bg-white cursor-pointer">
-                    Hide
-                  </div>
+                    <div className="shadow-xl py-1 px-2 hover:bg-slate-500 hover:text-white bg-white cursor-pointer">
+                      Tag
+                    </div>
 
-                </div>}
+                   </div>
+                  )
+                    : 
+                  (
+                    popup === thought._id && thought.by !== using.name.givenName ? 
+                    (
+                      <div className="absolute text-xs flex-col bg-white rounded-sm shadow-xl">
+
+                        <div className="shadow-xl py-1 px-2 hover:bg-slate-500 hover:text-white bg-white cursor-pointer">
+                          Hide
+                        </div>
+
+                      </div>
+                    )
+                    : ('')
+                      
+                  )
+
+                }
 
                 </div>
               </div>
@@ -93,6 +117,33 @@ const Thoughts = ( { thoughts, using } ) => {
       </Link>    
 
   </div>);
+
+}
+
+function popupModal(id, setPopup, setContext, context){
+
+  if(context % 2 === 0){
+    setContext(context++)
+    setPopup(id)
+  }
+  else{
+    setContext(context++)
+    setPopup(-1)  
+  }
+  
+}
+
+async function delThought(id){
+
+  fetch('http://localhost:8080/thought/'+id, {
+    method: 'DELETE'
+  })
+  .then(() => {
+    //Rerender component... 
+    //This reloads the complete page...
+    window.location.reload()
+  })
+  
 
 }
 

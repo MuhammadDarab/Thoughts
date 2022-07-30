@@ -10,7 +10,7 @@ const Thought = ( { using } ) => {
 
         let comment = document?.querySelector('#comment').value;
 
-        fetch('https://thoughtsbackend.vercel.app/comment', { 
+        fetch('http://localhost:8080/comment', { 
             method : 'POST',
             mode: 'cors', // no-cors, *cors, same-origin
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -37,7 +37,7 @@ const Thought = ( { using } ) => {
     useEffect(() => {
 
         let thoughtId = localStorage.getItem('thought') 
-        fetch('https://thoughtsbackend.vercel.app/thought/' + thoughtId )
+        fetch('http://localhost:8080/thought/' + thoughtId )
         .then((res) => res.json())
         .then((result) => {
 
@@ -49,10 +49,9 @@ const Thought = ( { using } ) => {
 
     useEffect(() => {
 
-        console.log('just ran again, No of rerenders => ' + update)
         setTimeout(() => {
             let thoughtId = localStorage.getItem('thought')
-            fetch('https://thoughtsbackend.vercel.app/comments/' + thoughtId)
+            fetch('http://localhost:8080/comments/' + thoughtId)
             .then(response => response.json())
             .then(cmnt => setComments(cmnt.reverse()))
         }, 1000)
@@ -70,9 +69,9 @@ const Thought = ( { using } ) => {
         <div className="pl-12">
             <i className="text-slate-500">@{thought?.by} says...</i>
         <br />
-            <input id="title" type="text" disabled value={thought?.title}  placeholder="Title.." className="p-2 my-4 text-6xl rounded-xl shadow-xl"/>
+            <input id="title" type="text" disabled placeholder={thought?.title} className="placeholder-slate-500 p-2 my-4 text-6xl rounded-xl shadow-xl"/>
         <br />
-            <textarea id="description" cols="72" disabled rows="10" value={thought?.description} placeholder="thought.." className="p-2 text-xl rounded-xl shadow-xl"></textarea>
+            <textarea id="description" cols="72" disabled rows="10" placeholder={thought?.description}  className="p-2 text-xl rounded-xl shadow-xl placeholder-slate-500"></textarea>
         
             <div className="flex items-center">
                 

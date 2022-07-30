@@ -12,7 +12,6 @@ const Profile = () => {
 
     async function check() {
       let loggedIn = await authCheck()
-      console.log(loggedIn)
       if(!loggedIn){
         route.push('/login')
       }
@@ -26,10 +25,9 @@ const Profile = () => {
     useEffect(() => {
   
       const user = window.location.pathname.slice(9)
-      console.log(user)
       const getProfile = async () => {
   
-        fetch('https://thoughtsbackend.vercel.app/profile/'+ user ,{
+        fetch('http://localhost:8080/profile/'+ user ,{
           method: 'GET',
           credentials: 'include',
           headers: {
@@ -47,18 +45,19 @@ const Profile = () => {
 
     }, [])
     
-    return (<div className='m-12 flex justify-between'>
-
-        <div>
+    return (
+    <div className='m-12 flex justify-between'>
+    
+      <div>
             <div className='bg-blue-400 w-fit rounded-full shadow-lg cursor-pointer'  style={{ backgroundImage: `url(${profile?.details?.img})`, backgroundSize: 'cover', padding: '140px' }}></div>
 
             <div className="text-4xl font-bold mt-8 text-slate-700">{profile?.details?.fullName}</div>
             <div className="text-xl font-light text-slate-700">@{profile?.details?.tag}</div>
 
             <div className='w-72 text-slate-700'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, dolores! Debitis autem quam incidunt ad "(Bio from mongo!)"</div>
-        </div>
-
-        <div className='flex-1 text-2xl font-bold text-slate-700'>
+      </div>
+  
+      <div className='flex-1 text-2xl font-bold text-slate-700'>
 
             {profile?.details?.fullName}'s Thoughts..
 
@@ -94,8 +93,10 @@ const Profile = () => {
 
           </h1>
 
-        </div>
-    </div>);
+      </div>
+
+    </div>
+    );
 }
  
 export default Profile;

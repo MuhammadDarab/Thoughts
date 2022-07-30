@@ -21,14 +21,12 @@ function App() {
   const getUsing = (val) => {
 
     setUsing(val)
-    console.log('Updated...')
-    console.log('Upated V2?..')
 
   }
 
   useEffect(() => {
 
-    fetch('https://thoughtsbackend.vercel.app/thought')
+    fetch('http://localhost:8080/thought')
     .then(res => res.json())
     .then(data => {
 
@@ -36,12 +34,11 @@ function App() {
 
     })
 
-    fetch('https://thoughtsbackend.vercel.app/profiles')
+    fetch('http://localhost:8080/profiles')
     .then(res => res.json())
     .then(data => {
 
       setUsers(data)
-      console.log(data)
 
     })
 

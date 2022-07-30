@@ -1,25 +1,10 @@
 import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
-import authCheck from "../authenticate";
 
 const User = ({ getUsing }) => {
 
     const route = useHistory()
-
-    // useEffect(() => {
-
-    //   async function check() {
-    //     let loggedIn = await authCheck()
-    //     console.log(loggedIn)
-    //     if(!loggedIn){
-    //       route.push('/login')
-    //     }
-    //   }
-    //   // check()
-
-    // }, [])
-
     const [user, setUser] = useState(null);
     const [settings, setSettings] = useState(false);
 
@@ -27,7 +12,7 @@ const User = ({ getUsing }) => {
   
       const getUser = async () => {
   
-        fetch('https://thoughtsbackend.vercel.app/auth/login/success', {
+        fetch('http://localhost:8080/auth/login/success', {
           method: 'GET',
           credentials: 'include',
           headers: {
@@ -39,11 +24,13 @@ const User = ({ getUsing }) => {
         })
         .then(resp => resp.json())
         .then(result => {
-          setUser(result.user)
-          getUsing(result.user)
+          if(result.success){
+            setUser(result.user)
+            getUsing(result.user)
+          }
+          else
+          route.push('/login')
         })
-        
-        user ? console.log(user) : console.log("not here yet")
   
       }
       getUser();
@@ -73,7 +60,7 @@ const User = ({ getUsing }) => {
                 backgroundPosition : 'center'
             }}
             onClick={() => {
-                window.open('https://thoughtsbackend.vercel.app/auth/logout', '_self')
+                window.open('http://localhost:8080/auth/logout', '_self')
             }}
         ></div>
 

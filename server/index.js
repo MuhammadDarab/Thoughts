@@ -27,14 +27,12 @@ app.use(expressSession({
     key: "someKey",
     secret: 'ajdwjaidjawidj',
     cookie: {
-      maxAge: 2678400000,
-      sameSite: 'none',
-      secure: 'auto'
+      maxAge: 2678400000
     },
 }));
 app.use(cors({
 
-    origin: "https://thoughts-rho.vercel.app",
+    origin: "http://localhost:3000",
     credentials: true,
 
 }));
@@ -80,9 +78,12 @@ app.delete('/thought/:id', (req, res) => {
 
     const { params: { id } } = req;
 
-    Thought.findOneAndRemove({ id })
-    .then((result) => { 
-        res.send('~thought Deleted~')
+    Thought.findOneAndRemove({ _id: id })
+    .then(() => {
+        res.send(200)
+    })
+    .catch(() => {
+        res.send(500)
     })
 
 })
@@ -115,8 +116,8 @@ app.get('/auth/google', passport.authenticate('google', { scope: [ 'email', 'pro
 }))
 
 app.get('/auth/google/redirect', passport.authenticate('google', {
-    successRedirect: 'https://thoughts-rho.vercel.app/home',
-    failureRedirect: 'https://thoughts-rho.vercel.app/failed'
+    successRedirect: 'http://localhost:3000/home',
+    failureRedirect: 'http://localhost:3000/failed'
 }),(req, res) => {
 
     res.send(req.user)
@@ -141,14 +142,14 @@ app.get('/auth/login/success', (req, res) => {
 
     }
     else
-    res.send(404)
+    res.send({ success: false })
 
 })
 
 app.get('/auth/logout', (req, res) => {
 
     req.logout({ keepSessionInfo: false}, () => {
-        res.redirect('https://thoughts-rho.vercel.app/login')
+        res.redirect('http://localhost:3000/login')
     });
 
 })
