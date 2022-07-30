@@ -4,6 +4,7 @@
   "description": "An App to let your thoughts be saved...",
   "main": "index.js",
   "scripts": {
+    "depend": "concurrently \"npm install\" \"cd server && npm install\" \"cd app && npm install\" ",
     "start": "concurrently \"cd server && node index.js\" \"cd app && npm run start\" ",
     "build": "concurrently \"cd server && node index.js\" \"cd app && npm run build\" "
   },
