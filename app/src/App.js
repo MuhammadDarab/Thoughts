@@ -52,9 +52,9 @@ function App() {
 
           <Switch>
 
-          <Route exact path="/">
+          {/* <Route exact path="/">
             <Redirect to={'/login'}/>
-          </Route>
+          </Route> */}
 
             <Route exact path="/login">
               <Login />
