@@ -10,6 +10,7 @@ import Footer from './comps/footer';
 import User from './comps/_user';
 import Account from './comps/account';
 import Profile from './comps/profile';
+import { Redirect } from 'react-router-dom';
 import env from './env';
 
 function App() {
@@ -50,6 +51,10 @@ function App() {
       <div className="App">
 
           <Switch>
+
+          <Route exact path="/">
+            <Redirect to={'/login'}/>
+          </Route>
 
             <Route exact path="/login">
               <Login />
