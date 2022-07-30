@@ -28,8 +28,8 @@ const Account = () => {
           if(result.success){
             setUser(result.user)
           }
-          else
-          route.push('/login')
+          // else
+          // route.push('/login')
         })
   
       }

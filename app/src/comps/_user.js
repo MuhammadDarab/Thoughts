@@ -28,8 +28,8 @@ const User = ({ getUsing }) => {
             setUser(result.user)
             getUsing(result.user)
           }
-          else
-          route.push('/login')
+          // else
+          // route.push('/login')
         })
   
       }
