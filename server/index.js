@@ -24,10 +24,12 @@ const app = express();
 app.use(express.json());
 
 app.use(expressSession({
-    key: "someKey",
-    secret: 'ajdwjaidjawidj',
+    key: "authCookie",
+    secret: 'thisneedstobehiddenrealserioustalk',
     cookie: {
-      maxAge: 2678400000
+      maxAge: 2678400000,
+      sameSite: 'none',
+      secure: true
     },
 }));
 app.use(cors({
