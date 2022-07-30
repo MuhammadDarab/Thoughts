@@ -78,7 +78,7 @@ function postThought(route, using) {
         }) // body data type must match "Content-Type" header
     }
 
-    fetch('https://thoughtsbackend.vercel.app/thought', response)
+    fetch('http://localhost:8080/thought', response)
     .then(() => route.push('/home'))
     .then(() => {
         //Rerender component... 

@@ -135,7 +135,7 @@ function popupModal(id, setPopup, setContext, context){
 
 async function delThought(id){
 
-  fetch('https://thoughtsbackend.vercel.app/thought/'+id, {
+  fetch('http://localhost:8080/thought/'+id, {
     method: 'DELETE'
   })
   .then(() => {
