@@ -32,7 +32,7 @@ app.use(expressSession({
 }));
 app.use(cors({
 
-    origin: "http://localhost:3000",
+    origin: "https://thoughts-rho.vercel.app",
     credentials: true,
 
 }));
@@ -116,8 +116,8 @@ app.get('/auth/google', passport.authenticate('google', { scope: [ 'email', 'pro
 }))
 
 app.get('/auth/google/redirect', passport.authenticate('google', {
-    successRedirect: 'http://localhost:3000/home',
-    failureRedirect: 'http://localhost:3000/failed'
+    successRedirect: 'https://thoughts-rho.vercel.app/home',
+    failureRedirect: 'https://thoughts-rho.vercel.app/failed'
 }),(req, res) => {
 
     res.send(req.user)
@@ -149,7 +149,7 @@ app.get('/auth/login/success', (req, res) => {
 app.get('/auth/logout', (req, res) => {
 
     req.logout({ keepSessionInfo: false}, () => {
-        res.redirect('http://localhost:3000/login')
+        res.redirect('https://thoughts-rho.vercel.app/login')
     });
 
 })
