@@ -12,7 +12,7 @@ const User = ({ getUsing }) => {
   
       const getUser = async () => {
   
-        fetch('http://localhost:8080/auth/login/success', {
+        fetch('https://thoughtsbackend.vercel.app/auth/login/success', {
           method: 'GET',
           credentials: 'include',
           headers: {
@@ -60,7 +60,7 @@ const User = ({ getUsing }) => {
                 backgroundPosition : 'center'
             }}
             onClick={() => {
-                window.open('http://localhost:8080/auth/logout', '_self')
+                window.open('https://thoughtsbackend.vercel.app/auth/logout', '_self')
             }}
         ></div>
 
