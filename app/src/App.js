@@ -27,7 +27,7 @@ function App() {
 
   useEffect(() => {
 
-    fetch('https://thoughtsbackend.vercel.app/thought')
+    fetch('https://mighty-ocean-51341.herokuapp.com/thought')
     .then(res => res.json())
     .then(data => {
 
@@ -35,7 +35,7 @@ function App() {
 
     })
 
-    fetch('https://thoughtsbackend.vercel.app/profiles')
+    fetch('https://mighty-ocean-51341.herokuapp.com/profiles')
     .then(res => res.json())
     .then(data => {
 

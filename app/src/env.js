@@ -1,7 +1,7 @@
 let env = {
 
-    // backendURL: 'https://thoughtsbackend.vercel.app' 
-    backendURL: 'https://thoughtsbackend.vercel.app'
+    // backendURL: 'https://mighty-ocean-51341.herokuapp.com' 
+    backendURL: 'https://mighty-ocean-51341.herokuapp.com'
 
 }
 

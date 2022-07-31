@@ -10,7 +10,7 @@ const Thought = ( { using } ) => {
 
         let comment = document?.querySelector('#comment').value;
 
-        fetch('https://thoughtsbackend.vercel.app/comment', { 
+        fetch('https://mighty-ocean-51341.herokuapp.com/comment', { 
             method : 'POST',
             mode: 'cors', // no-cors, *cors, same-origin
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -37,7 +37,7 @@ const Thought = ( { using } ) => {
     useEffect(() => {
 
         let thoughtId = localStorage.getItem('thought') 
-        fetch('https://thoughtsbackend.vercel.app/thought/' + thoughtId )
+        fetch('https://mighty-ocean-51341.herokuapp.com/thought/' + thoughtId )
         .then((res) => res.json())
         .then((result) => {
 
@@ -51,7 +51,7 @@ const Thought = ( { using } ) => {
 
         setTimeout(() => {
             let thoughtId = localStorage.getItem('thought')
-            fetch('https://thoughtsbackend.vercel.app/comments/' + thoughtId)
+            fetch('https://mighty-ocean-51341.herokuapp.com/comments/' + thoughtId)
             .then(response => response.json())
             .then(cmnt => setComments(cmnt.reverse()))
         }, 1000)

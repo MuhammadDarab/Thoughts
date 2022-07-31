@@ -78,7 +78,7 @@ function postThought(route, using) {
         }) // body data type must match "Content-Type" header
     }
 
-    fetch('https://thoughtsbackend.vercel.app/thought', response)
+    fetch('https://mighty-ocean-51341.herokuapp.com/thought', response)
     .then(() => route.push('/home'))
     .then(() => {
         //Rerender component... 

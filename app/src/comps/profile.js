@@ -27,7 +27,7 @@ const Profile = () => {
       const user = window.location.pathname.slice(9)
       const getProfile = async () => {
   
-        fetch('https://thoughtsbackend.vercel.app/profile/'+ user ,{
+        fetch('https://mighty-ocean-51341.herokuapp.com/profile/'+ user ,{
           method: 'GET',
           credentials: 'include',
           headers: {
