@@ -25,6 +25,7 @@ app.use(express.json());
 
 app.use(expressSession({
     key: "authCookie",
+    proxy: true,
     secret: 'thisneedstobehiddenrealserioustalk',
     cookie: {
       maxAge: 2678400000,
@@ -144,7 +145,7 @@ app.get('/auth/login/success', (req, res) => {
 
     }
     else
-    res.send({ success: false })
+    res.send({ success: false, sameSite: '...is a problem' })
 
 })
 
