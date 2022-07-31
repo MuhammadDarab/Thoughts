@@ -28,7 +28,8 @@ app.use(expressSession({
     secret: 'thisneedstobehiddenrealserioustalk',
     cookie: {
       maxAge: 2678400000,
-      sameSite: 'none'
+      sameSite: 'none',
+      secure: true
     },
 }));
 app.use(cors({
