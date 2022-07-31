@@ -38,9 +38,11 @@ const User = ({ getUsing }) => {
     }, [])
 
     return (
+      user ? <>
+
         <div className='p-8 m-12 bg-blue-400 w-fit rounded-full shadow-lg cursor-pointer fixed bottom-0 right-0' style={{ backgroundImage: `url(${user?.photos[0]?.value})`, backgroundSize: 'cover' }} onClick={() => {
-            setSettings(!settings)
-        }}>
+                    setSettings(!settings)
+                }}>
 
         <div className="bg-lime-600 p-2 rounded-full shadow-lg cursor-pointer absolute bottom-0 left-0">
         </div>
@@ -68,6 +70,8 @@ const User = ({ getUsing }) => {
         : null }
 
         </div>  
+      
+      </> : null
     );
 }
  
