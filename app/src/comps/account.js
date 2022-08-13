@@ -13,7 +13,7 @@ const Account = () => {
   
       const getUser = async () => {
   
-        fetch('https://mighty-ocean-51341.herokuapp.com/auth/login/success', {
+        fetch('https://thoughtscloud.vercel.app/auth/login/success', {
           method: 'GET',
           credentials: 'include',
           headers: {
@@ -39,7 +39,7 @@ const Account = () => {
 
     useEffect(() => {
       const getThoughts = async () => {
-        fetch('https://mighty-ocean-51341.herokuapp.com/thoughts/'+ user?.name?.givenName, {
+        fetch('https://thoughtscloud.vercel.app/thoughts/'+ user?.name?.givenName, {
           method: 'GET',
           credentials: 'include',
           headers: {

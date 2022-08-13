@@ -135,7 +135,7 @@ function popupModal(id, setPopup, setContext, context){
 
 async function delThought(id){
 
-  fetch('https://mighty-ocean-51341.herokuapp.com/thought/'+id, {
+  fetch('https://thoughtscloud.vercel.app/thought/'+id, {
     method: 'DELETE'
   })
   .then(() => {

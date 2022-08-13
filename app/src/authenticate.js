@@ -1,7 +1,7 @@
 const authCheck = async () => {
 
     let Auth = false
-    let resp = await fetch('https://mighty-ocean-51341.herokuapp.com/auth/login/success', {
+    let resp = await fetch('https://thoughtscloud.vercel.app/auth/login/success', {
         method: 'GET',
         credentials: 'include',
         headers: {

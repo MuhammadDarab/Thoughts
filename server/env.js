@@ -1,6 +1,6 @@
 module.exports = {
 
-    // frontendURL: 'https://thoughts-rho.vercel.app'
-    frontendURL: 'https://thoughts-rho.vercel.app'
+    // frontendURL: 'http://localhost:3000'
+    frontendURL: 'http://localhost:3000'
 
 }

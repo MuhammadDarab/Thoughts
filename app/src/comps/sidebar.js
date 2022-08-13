@@ -8,6 +8,8 @@ const Sidebar = ( { users } ) => {
     const [trending, setTrending] = useState(true);
     const [searchUser, setSearchUser] = useState(false);
 
+    const [toSearch, setToSearch] = useState('');
+
     const thoughts = [
         'Election 2022',
         'Pak Vs Aus',
@@ -71,7 +73,9 @@ const Sidebar = ( { users } ) => {
             {searchUser && (<>
             
                 <div className="rounded-2xl shadow-xl w-fit p-2 focus:outline-none">
-                🔎<input type="text" className="bg-gray-100 p-2 rounded-2xl w-fit" />
+                🔎<input type="text" className="bg-gray-100 p-2 rounded-2xl w-fit" onChange={(e) => {
+                    setToSearch(e.target.value)
+                }} />
             </div>
 
             <div className="py-1 mt-4 rounded-2xl shadow-2xl bg-blue-400">

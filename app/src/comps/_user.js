@@ -12,7 +12,7 @@ const User = ({ getUsing }) => {
   
       const getUser = async () => {
   
-        fetch('https://mighty-ocean-51341.herokuapp.com/auth/login/success', {
+        fetch('https://thoughtscloud.vercel.app/auth/login/success', {
           method: 'GET',
           credentials: 'include',
           headers: {
@@ -38,7 +38,7 @@ const User = ({ getUsing }) => {
     }, [])
 
     return (
-      user ? <>
+      <>
 
         <div className='p-8 m-12 bg-blue-400 w-fit rounded-full shadow-lg cursor-pointer fixed bottom-0 right-0' style={{ backgroundImage: `url(${user?.photos[0]?.value})`, backgroundSize: 'cover' }} onClick={() => {
                     setSettings(!settings)
@@ -62,7 +62,7 @@ const User = ({ getUsing }) => {
                 backgroundPosition : 'center'
             }}
             onClick={() => {
-                window.open('https://mighty-ocean-51341.herokuapp.com/auth/logout', '_self')
+                window.open('https://thoughtscloud.vercel.app/auth/logout', '_self')
             }}
         ></div>
 
@@ -71,7 +71,7 @@ const User = ({ getUsing }) => {
 
         </div>  
       
-      </> : null
+      </>
     );
 }
  
